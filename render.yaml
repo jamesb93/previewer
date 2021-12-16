@@ -1,0 +1,7 @@
+previewsEnabled: true
+services:
+- type: web
+  name: previewer
+  env: static
+  buildCommand: yarn install && yarn run build
+  staticPublishPath: ./build
