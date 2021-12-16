@@ -7,16 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: afc163/surge-preview@v1
-        id: generate_preview
-        with:
-          surge_token: ${{ secrets.SURGE_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          dist: build
-          teardown: true
-          build: |
-            npm install
-            npm run build
-            
-      - name: Get the preview_url
-        run: echo "url => ${{ steps.preview_step.outputs.preview_url }}"
+      
+      - name: Install pnpm
+        run: npm i -g pnpm
+
+      - name: install surge
+      	run: pnpm i -g surge
+
+      - name: Build Site
+        run: pnpm i && pnpm run build
+	
+      - name: Deploy to surge.sh
+      	run: surge ./build 'flucoma-learn-pr${{ github.event.number }}.surge.sh' --token ${{ secrets.SURGE_TOKEN }}
