@@ -1,6 +1,10 @@
 name: 🔂 Surge PR Preview
 
-on: [pull_request]
+on:
+  push:
+    branches: [*]
+  pull_request:
+    branches: [*]
 
 jobs:
   preview:
@@ -18,4 +22,4 @@ jobs:
         run: pnpm i && pnpm run build
 	
       - name: Deploy to surge.sh
-      	run: surge ./build 'flucoma-learn-pr${{ github.event.number }}.surge.sh' --token ${{ secrets.SURGE_TOKEN }}
+      	run: surge .svelte-kit/build 'flucoma-learn-pr${{ github.event.number }}.surge.sh' --token ${{ secrets.SURGE_TOKEN }}
