@@ -1,10 +1,6 @@
 name: 🔂 Surge PR Preview
 
-on:
-  push:
-    branches: [*]
-  pull_request:
-    branches: [*]
+on: [push, pull_request]
 
 jobs:
   preview:
