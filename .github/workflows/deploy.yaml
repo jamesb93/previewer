@@ -2,9 +2,9 @@ name: 🔂 Surge PR Preview
 
 on:
   push:
-    branches: [*]
+    branches: [ '*' ]
   pull_request:
-    branches: [*]
+    branches: [ '*' ]
 
 jobs:
   preview:
