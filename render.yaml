@@ -4,4 +4,4 @@ services:
   name: previewer
   env: static
   buildCommand: yarn install && yarn run build
-  staticPublishPath: ./build
+  staticPublishPath: ./.svelte-kit/build
